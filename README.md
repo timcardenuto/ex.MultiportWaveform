@@ -1,0 +1,3 @@
+## ex.MultiportWaveform ##
+
+This example Redhawk waveform connects a ex.BurstioProducer to 3 ex.MultiportConsumers. Because the ex.BurstioProducer uses a connection table to only route streamID "datastream1" to a single connection point using the ID "connection_1", you'll only see the first ex.MultiportConsumer receive any data (through standard out in terminal). This is by design - if you wanted to produce multiple different data streams and have each one *only* go to a different endpoint you need to use connection tables. Otherwise every downstream Component receives *every* data stream, which is undesirable in most cases.
