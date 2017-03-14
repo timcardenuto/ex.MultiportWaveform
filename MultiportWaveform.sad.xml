@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE softwareassembly PUBLIC "-//JTRS//DTD SCA V2.2.2 SAD//EN" "softwareassembly.dtd">
+<softwareassembly id="DCE:6e30097c-8498-47f0-bec8-b2d33cd854a6" name="ex.MultiportWaveform">
+  <componentfiles>
+    <componentfile id="BurstioProducer_5a17bc82-9ede-4b13-9ad5-1494aec67a76" type="SPD">
+      <localfile name="/components/ex/BurstioProducer/BurstioProducer.spd.xml"/>
+    </componentfile>
+    <componentfile id="MultiportConsumer_97bda687-0304-443e-9bbd-94288b74ebea" type="SPD">
+      <localfile name="/components/ex/MultiportConsumer/MultiportConsumer.spd.xml"/>
+    </componentfile>
+  </componentfiles>
+  <partitioning>
+    <componentplacement>
+      <componentfileref refid="BurstioProducer_5a17bc82-9ede-4b13-9ad5-1494aec67a76"/>
+      <componentinstantiation id="BurstioProducer_1">
+        <usagename>BurstioProducer_1</usagename>
+        <findcomponent>
+          <namingservice name="BurstioProducer_1"/>
+        </findcomponent>
+      </componentinstantiation>
+    </componentplacement>
+    <componentplacement>
+      <componentfileref refid="MultiportConsumer_97bda687-0304-443e-9bbd-94288b74ebea"/>
+      <componentinstantiation id="MultiportConsumer_1" startorder="1">
+        <usagename>MultiportConsumer_1</usagename>
+        <findcomponent>
+          <namingservice name="MultiportConsumer_1"/>
+        </findcomponent>
+      </componentinstantiation>
+    </componentplacement>
+    <componentplacement>
+      <componentfileref refid="MultiportConsumer_97bda687-0304-443e-9bbd-94288b74ebea"/>
+      <componentinstantiation id="MultiportConsumer_2" startorder="2">
+        <usagename>MultiportConsumer_2</usagename>
+        <findcomponent>
+          <namingservice name="MultiportConsumer_2"/>
+        </findcomponent>
+      </componentinstantiation>
+    </componentplacement>
+    <componentplacement>
+      <componentfileref refid="MultiportConsumer_97bda687-0304-443e-9bbd-94288b74ebea"/>
+      <componentinstantiation id="MultiportConsumer_3" startorder="3">
+        <usagename>MultiportConsumer_3</usagename>
+        <findcomponent>
+          <namingservice name="MultiportConsumer_3"/>
+        </findcomponent>
+      </componentinstantiation>
+    </componentplacement>
+  </partitioning>
+  <assemblycontroller>
+    <componentinstantiationref refid="BurstioProducer_1"/>
+  </assemblycontroller>
+  <connections>
+    <connectinterface id="connection_1">
+      <usesport>
+        <usesidentifier>burstFloat_out</usesidentifier>
+        <componentinstantiationref refid="BurstioProducer_1"/>
+      </usesport>
+      <providesport>
+        <providesidentifier>burstFloat_in</providesidentifier>
+        <componentinstantiationref refid="MultiportConsumer_1"/>
+      </providesport>
+    </connectinterface>
+    <connectinterface id="connection_2">
+      <usesport>
+        <usesidentifier>burstFloat_out</usesidentifier>
+        <componentinstantiationref refid="BurstioProducer_1"/>
+      </usesport>
+      <providesport>
+        <providesidentifier>burstFloat_in</providesidentifier>
+        <componentinstantiationref refid="MultiportConsumer_2"/>
+      </providesport>
+    </connectinterface>
+    <connectinterface id="connection_3">
+      <usesport>
+        <usesidentifier>burstFloat_out</usesidentifier>
+        <componentinstantiationref refid="BurstioProducer_1"/>
+      </usesport>
+      <providesport>
+        <providesidentifier>burstFloat_in</providesidentifier>
+        <componentinstantiationref refid="MultiportConsumer_3"/>
+      </providesport>
+    </connectinterface>
+  </connections>
+</softwareassembly>
